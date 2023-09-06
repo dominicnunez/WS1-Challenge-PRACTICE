@@ -96,19 +96,17 @@
       // ❗ Hint: It's advised to deal with the other conditions first, like arguments being of the wrong type.
       //          In the real world, these are considered "edge cases".
 
+      let sum = 0
       let angles = [angleA, angleB, angleC]
       let numCount = angles.filter(Number.isInteger).length
-
-      let sum = 0
-
-      if (numCount < 3) {
-        return "all angles must be numbers"
-      }
-      let typeAngles = new Float64Array([angleA, angleB, angleC]).sort()
+      let typeAngles = new Float64Array(angles).sort()
       let sortedAngles = Object.values(typeAngles)
       let smallestAngle = sortedAngles[0]
       let largestAngle = sortedAngles.slice(-1)
 
+      if (numCount < 3) {
+        return "all angles must be numbers"
+      }
       for (angle of angles) {
         sum += angle;
       }
