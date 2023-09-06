@@ -70,8 +70,19 @@
       //    * If all values are falsy, return the string "all values falsy"
       //    * If all values are truthy, return the string "all values truthy"
       let passedArgs = [a, b, c, d, e];
+      let check = passedArgs.every(e => !!e);
+      let bothCheck = !passedArgs.every(e => !!e);
+      
+      if (bothCheck) {
+        return "some values truthy and some falsey";
+      } else if (!check) {
+        return "all values falsy";
+      } else {
+        return "all values truthy"; 
+      }
 
-    }
+      }
+
 
     // 👉 CHALLENGE 3
     function triangleAnalyzer() {
