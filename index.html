@@ -69,23 +69,21 @@
       //    * If some values are truthy and some falsy, return the string "some values truthy and some falsy"
       //    * If all values are falsy, return the string "all values falsy"
       //    * If all values are truthy, return the string "all values truthy"
-      let passedArgs = [a, b, c, d, e];
-      let check = passedArgs.every(e => !!e);
-      let bothCheck = !passedArgs.every(e => !!e);
-      
-      if (bothCheck) {
-        return "some values truthy and some falsey";
-      } else if (!check) {
-        return "all values falsy";
-      } else {
-        return "all values truthy"; 
-      }
+      let passedArgs = [a, b, c, d, e]
+      let trueCount = passedArgs.filter(Boolean).length
 
+      if (trueCount == 5) {
+        return "all values truthy"
+      } else if (trueCount == 0) {
+        return "all values falsy"
+      } else {
+        return "some values truthy and some falsy" 
       }
+    }
 
 
     // 👉 CHALLENGE 3
-    function triangleAnalyzer() {
+    function triangleAnalyzer(angleA, angleB, angleC) {
       // 🧠 triangleAnalyzer takes three arguments named angleA, angleB, and angleC:
       //    * If any angle is 90 degrees, return the string "this is a right triangle"
       //    * If any angle is over 90 degrees, return the string "this is an obtuse triangle"
@@ -97,6 +95,34 @@
       // ❗ Hint: the order of the conditions in the pseudo-code above and in the actual code is not necessarily the same
       // ❗ Hint: It's advised to deal with the other conditions first, like arguments being of the wrong type.
       //          In the real world, these are considered "edge cases".
+
+      let angles = [angleA, angleB, angleC]
+      let numCount = angles.filter(Number.isInteger).length
+
+      let sum = 0
+
+      if (numCount < 3) {
+        return "all angles must be numbers"
+      }
+      let typeAngles = new Float64Array([angleA, angleB, angleC]).sort()
+      let sortedAngles = Object.values(typeAngles)
+      let smallestAngle = sortedAngles[0]
+      let largestAngle = sortedAngles.slice(-1)
+
+      for (angle of angles) {
+        sum += angle;
+      }
+      if (sum != 180) {
+        return "angles must total 180";
+      } else if (smallestAngle <= 0) {
+        return "all angles must be greater than zero"
+      } else if (largestAngle == 90) {
+        return "this is a right triangle"
+      } else if (largestAngle > 90) {
+        return "this is an obtuse triangle"
+      } else {
+        return "this is an acute triangle"
+      }
     }
 
     // 👉 CHALLENGE 4
