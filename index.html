@@ -124,13 +124,25 @@
     }
 
     // 👉 CHALLENGE 4
-    function advancedBatteryCare() {
+    function advancedBatteryCare(percentage) {
       // 🧠 advancedBatteryCare takes an argument named percentage that will be a number between 0 and 100 inclusive:
       //    * If percentage in the range between 20 and 80 inclusive (E.G. 47), return a string like "your battery is at 47%"
       //    * If percentage over 80, return the string "please unplug charger"
       //    * If percentage under 20, return the string "please connect charger"
       //    * If percentage exactly 0, return the string "congrats, battery dead"
       //    * If percentage exactly 100, return the string "congrats, you cooked your battery"
+      let p = percentage;
+      if (p == 100) {
+        return "congrats, you cooked your battery";
+      } else if (p == 0) {
+        return "congrats, battery dead";
+      } else if (p < 20) {
+        return "please connect charger";
+      } else if (p > 80) {
+        return "please unplug charger";
+      } else {
+        return `your battery is at ${p}%`;
+      }
     }
 
     // 👉 CHALLENGE 5
